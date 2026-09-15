@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy policy — BassBoost</title>
+    <meta
+      name="description"
+      content="BassBoost processes the selected tab's audio locally and retains nothing."
+    />
+    <link rel="stylesheet" href="privacy-policy.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">BassBoost — Chrome extension</p>
+        <h1>Privacy policy</h1>
+        <p class="meta">Last updated 5 September 2026 · applies to version 0.1.1</p>
+      </header>
+
+      <section class="callout">
+        <p>
+          BassBoost handles the selected tab's audio locally in volatile memory. It temporarily
+          reads the current tab title and URL solely to identify the tab and prevent capture on
+          restricted pages. Audio, titles and URLs are never recorded, retained, transmitted or
+          shared. Nothing is transmitted to the developer or to any third party, and the extension
+          makes no network requests.
+        </p>
+        <p>
+          Before any of that happens, the extension shows you a notice describing exactly this and
+          waits for you to agree.
+        </p>
+      </section>
+
+      <h2>Limited Use</h2>
+      <p>
+        The use of information received from Google APIs will adhere to the
+        <a href="https://developer.chrome.com/docs/webstore/program-policies/user-data-faq"
+           rel="noopener noreferrer">Chrome Web Store User Data Policy</a>, including the Limited Use
+        requirements.
+      </p>
+
+      <h2>Your agreement comes first</h2>
+      <p>The first time you open BassBoost it shows a notice:</p>
+      <blockquote>
+        BassBoost locally uses the title, URL and audio of the tab you choose to identify the tab,
+        avoid incompatible pages and apply the effects. This data is never recorded or transmitted.
+      </blockquote>
+      <p>
+        Until you choose <strong>Agree and continue</strong>, the extension does not read the tab's
+        title, does not read its URL, and does not request audio. Choosing <strong>Cancel</strong>
+        simply closes the popup. The keyboard shortcut is subject to the same check: without your
+        agreement it refuses to start and reports that the notice has not been accepted.
+      </p>
+      <p>
+        What is stored when you agree is a single number — the version of the notice you agreed to —
+        in <code>chrome.storage.local</code>. The text of the notice itself is not stored, and
+        nothing about you is.
+      </p>
+
+      <h2>What the extension handles, and for how long</h2>
+
+      <h3>Tab audio — processed locally, never retained</h3>
+      <p>
+        When you press the button (or use the keyboard shortcut) on a tab, Chrome hands the
+        extension a live audio stream for that tab. The audio passes through Web Audio filters in
+        memory and is played straight back to your speakers.
+      </p>
+      <p>
+        Only the few milliseconds the filters need are held at any moment: a low-shelf filter and
+        the output stage's look-ahead buffer (about 5 ms). Nothing is written to disk, nothing is
+        accumulated, nothing is analysed or transcribed, and nothing is sent anywhere. When you turn
+        the boost off — or the tab closes, navigates, or its stream ends — the audio nodes are
+        disconnected, the stream tracks are stopped and the audio context is closed.
+      </p>
+      <p>
+        <strong>The audio of a tab can contain anything that tab is playing, including a call or a
+        voice message.</strong> That is why it is worth being precise: the extension is a filter in
+        the playback path, not a recorder. It has no code that can store or send audio.
+      </p>
+
+      <h3>Tab title — shown while the popup is open</h3>
+      <p>
+        While the popup is open it displays the title of the current tab, so you can see which tab
+        you are about to affect. The title is read when the popup opens and is discarded when it
+        closes. It is not stored and does not leave the browser.
+      </p>
+
+      <h3>Tab URL — checked, not kept</h3>
+      <p>
+        When the popup opens, the extension reads the current tab's URL to decide whether Chrome
+        will allow capture at all. Pages such as <code>chrome://</code>, the Chrome Web Store,
+        DevTools and local files cannot be captured, and checking first is what lets the popup
+        explain that instead of failing with an obscure error.
+      </p>
+      <p>
+        The URL is used for that check and then discarded. It is not stored, not logged, not
+        transmitted, and no history of visited pages is built.
+      </p>
+
+      <h3>Preferences — stored locally</h3>
+      <p>
+        Five values are saved with <code>chrome.storage.local</code>: the selected preset, the
+        custom boost value, the output mode, the theme, and the version of the notice you agreed to.
+        They stay in your browser profile, are not synchronised across devices, and contain nothing
+        that identifies you.
+      </p>
+
+      <h3>Session state — cleared when the browser closes</h3>
+      <p>
+        While a tab is being processed, its on/off state is held in
+        <code>chrome.storage.session</code>, which Chrome clears when the browser closes. It holds
+        tab ids and effect settings — no titles and no URLs.
+      </p>
+
+      <h2>What the extension does not do</h2>
+      <ul>
+        <li>Nothing is transmitted to the developer or to any third party.</li>
+        <li>No analytics, telemetry, crash reporting or usage statistics.</li>
+        <li>No installation identifier, user identifier, advertising identifier or cookie.</li>
+        <li>No account, sign-in, payment or subscription.</li>
+        <li>No recording, retention, uploading, sharing or transcription of audio.</li>
+        <li>
+          No content scripts. The extension has no access to a page's DOM, text, forms, cookies or
+          storage — only to the audio that page is already playing, and only after you ask for it.
+        </li>
+        <li>No history of visited pages.</li>
+        <li>No network requests of any kind. No remote code, configuration or fonts.</li>
+        <li>No advertising, affiliate links or cross-promotion.</li>
+        <li>No data of any kind is sold or shared with third parties.</li>
+      </ul>
+
+      <h2>The optional donation link</h2>
+      <p>
+        BassBoost contains an optional link to support the project. It is not required, it unlocks
+        nothing, it changes no audio and it removes no limitation.
+      </p>
+      <ul>
+        <li>
+          Clicking it opens an external page run by the chosen donation provider, in a new tab.
+          Nothing happens until you click.
+        </li>
+        <li>
+          The extension does not collect, receive or process payment details of any kind. Payment is
+          handled entirely by that external provider.
+        </li>
+        <li>Once you leave, that provider's own terms and privacy policy apply.</li>
+        <li>
+          <strong>No audio, tab title, tab URL or any other tab information is sent to the donation
+          provider.</strong> The address carries no parameters at all; an address with a query
+          string or fragment is rejected outright.
+        </li>
+        <li>
+          No request is made to the provider when the popup opens, and no remote script, style, font
+          or image is ever loaded.
+        </li>
+      </ul>
+      <p>
+        <strong>Status:</strong> the address is <code>https://ko-fi.com/obzelo</code>, a page on
+        <strong>Ko-fi</strong>. It is the only external address in the extension. Nothing is added to
+        it: no query string, no fragment, no identifier of any kind. Opening it is the only thing
+        that ever leaves this extension, and only when you click the button. If you never click,
+        nothing about Ko-fi ever runs and no request is made to it.
+      </p>
+      <p>
+        Ko-fi is an independent service. Once you are on their page, their own terms and privacy
+        policy apply, and whatever you do there is between you and them.
+      </p>
+
+      <h2>Permissions and why they exist</h2>
+      <table>
+        <thead>
+          <tr><th scope="col">Permission</th><th scope="col">Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>tabCapture</code></td>
+            <td>Provides the audio of the tab you chose, after you act. This is the only source of audio.</td>
+          </tr>
+          <tr>
+            <td><code>offscreen</code></td>
+            <td>Keeps the audio processing running once the popup closes.</td>
+          </tr>
+          <tr>
+            <td><code>storage</code></td>
+            <td>Saves the five preferences above, plus ephemeral session state.</td>
+          </tr>
+          <tr>
+            <td><code>activeTab</code></td>
+            <td>
+              Gives temporary access to the current tab's title and URL, so the popup can name the
+              tab and detect pages Chrome refuses to capture. It does <strong>not</strong> provide
+              the audio.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>The extension declares no host permissions.</p>
+
+      <h2>Data sharing</h2>
+      <p>
+        None. Nothing is transmitted to the developer or to any third party, so there is nothing to
+        share, sell or disclose — for any purpose, including advertising, credit assessment or the
+        training of models.
+      </p>
+
+      <h2>Children</h2>
+      <p>
+        The extension is a general-purpose audio tool and is not directed at children, and nothing
+        about any user is transmitted or retained.
+      </p>
+
+      <h2>Your control</h2>
+      <p>
+        Everything the extension stores is in your browser profile. Removing the extension from
+        <code>chrome://extensions</code> deletes it, including your recorded agreement. You can also
+        clear it at any time through Chrome's site and extension data controls.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        If a future version changes what the extension handles, this page will be updated before
+        that version is published, the date at the top will change, and the notice will be shown
+        again for a fresh agreement.
+      </p>
+
+      <h2>Contact</h2>
+      <ul>
+        <li><strong>Publisher:</strong> Obzelo</li>
+        <li>
+          <strong>Email for privacy questions:</strong>
+          <a href="mailto:obzelosupport@gmail.com">obzelosupport@gmail.com</a>
+        </li>
+        <!-- PLACEHOLDER: fill this in once the page is hosted, before submitting. -->
+        <li>
+          <strong>Public URL of this policy:</strong>
+          <mark>[TODO: the HTTPS address where this page is hosted]</mark>
+        </li>
+      </ul>
+
+      <footer>
+        <p>This page is a static document. It loads no scripts, no trackers and no remote fonts.</p>
+      </footer>
+    </main>
+  </body>
+</html>
